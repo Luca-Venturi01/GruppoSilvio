@@ -18,6 +18,10 @@
 #include <limits.h>
 #include <float.h>
 
+#ifndef M_PI
+       #define M_PI 3.14159265358979323846
+#endif
+
 int main()
 {
     /* Dichiriazione di una variabile per ogni tipo studiato */

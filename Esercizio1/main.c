@@ -1,7 +1,7 @@
 /*
 
-    AUTORI: ---
-    EMAIL:  ---
+    AUTORI: ----
+    EMAIL:  ----
     DATA:   20201001
     ES:     Scrivere un programma C che dichiari una variabile per ogni tipo studiato (usando anche i qualificatori
             short, long, signed e unsigned), ne stampi il valore e l’occupazione di memoria in byte. Utilizzare TUTTI

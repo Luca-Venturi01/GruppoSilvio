@@ -22,6 +22,7 @@ int main() {
     // 1 - Sarebbe da controllare che il numero il numero max sia > di min
     //     ma senza il while è un po' difficile, potrei fare uno scambio da codice se min > max magari
     //     notificarlo poi all'utente.
+    // 2 - Inserire %[^ ] nelle scanf.
 
     /* Dichiarazione delle variabili */
     unsigned int cont = 0; // Rappresenta il numero di tentativi fatti per indovinare il numero

@@ -18,7 +18,7 @@
 
 int main() {
 
-    /* ToDo */
+    /* TODO: */
     // 1 - Sarebbe da controllare che il numero il numero max sia > di min
     //     ma senza il while è un po' difficile, potrei fare uno scambio da codice se min > max magari
     //     notificarlo poi all'utente.
@@ -28,7 +28,7 @@ int main() {
     /* Dichiarazione delle variabili */
     unsigned int cont = 0; // Rappresenta il numero di tentativi fatti per indovinare il numero
     int min, max; // Rappresentano l'intervallo di ricerca inserito in input dall'utente.
-    char temp = 0; // Rappresenta la rispota dell'utente ad ogni domanda posta.
+    char temp; // Rappresenta la rispota dell'utente ad ogni domanda posta.
     int num = 0; // Rappresenta la risposta fornita dal computer all'utente.
 
 
@@ -41,28 +41,31 @@ int main() {
 
     /* Inizio del gioco */
     // Abbiamo scelto l'alternativa di gioco n. 2
-    printf("Il numero e\' minore (<), uguale (=) o maggiore (>) di %d?", num = min);
-    scanf("%c", &temp);
+    printf("Il numero e\' minore (<), uguale (=) o maggiore (>) di %d? ", num = min);
+    scanf(" %c", &temp);
     
     switch (temp)
     {
         case '>':
             printf("\nHai inserito maggiore");
+            // do something here...
             break;
         case '<':
             printf("\nHai inserito minore");
+            // do something here...
             break;
         case '=':
-            printf("\nPerfetto, allora hai pensato a %d", num);
+            printf("\nPerfetto, allora hai pensato a %d!\n", num);
             break;
         default:
-            printf("\nIl carattere da lei inserito non e\' valido, inserire una risposta corretta, per favore! (< | = | >");
+            printf("\nIl carattere da lei inserito non e\' valido, inserire una risposta corretta, per favore! (< | = | >)");
             break;
     }
 
     /* Codice per Testing */
     // printf("Min: %d, Max: %d\n", min, max);
 
+    // FIXME:
     // printf("\nPremi invio per chiudere il terminale.");
     // getchar();
     system("PAUSE");

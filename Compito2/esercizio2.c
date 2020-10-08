@@ -27,14 +27,39 @@ int main() {
 
     /* Dichiarazione delle variabili */
     unsigned int cont = 0; // Rappresenta il numero di tentativi fatti per indovinare il numero
-    unsigned int min, max; // Rappresentano l'intervallo di ricerca inserito in input dall'utente.
+    int min, max; // Rappresentano l'intervallo di ricerca inserito in input dall'utente.
+    char temp = 0; // Rappresenta la rispota dell'utente ad ogni domanda posta.
+    int num = 0; // Rappresenta la risposta fornita dal computer all'utente.
 
+
+    /* Input dei dati iniziali */
     printf("Esercizio 2: Pensa a un numero\n");
     printf("------------------------------\n");
     printf("Inserisci l\'intervallo di ricerca (min max): ");
     scanf("%d %d", &min, &max);
     printf("Bene! Ora pensa a un numero compreso tra %d e %d\n", min, max);
+
+    /* Inizio del gioco */
+    // Abbiamo scelto l'alternativa di gioco n. 2
+    printf("Il numero e\' minore (<), uguale (=) o maggiore (>) di %d?", num = min);
+    scanf("%c", &temp);
     
+    switch (temp)
+    {
+        case '>':
+            printf("\nHai inserito maggiore");
+            break;
+        case '<':
+            printf("\nHai inserito minore");
+            break;
+        case '=':
+            printf("\nPerfetto, allora hai pensato a %d", num);
+            break;
+        default:
+            printf("\nIl carattere da lei inserito non e\' valido, inserire una risposta corretta, per favore! (< | = | >");
+            break;
+    }
+
     /* Codice per Testing */
     // printf("Min: %d, Max: %d\n", min, max);
 

@@ -24,6 +24,7 @@ int main() {
     //     ma senza il while è un po' difficile, potrei fare uno scambio da codice se min > max magari
     //     notificarlo poi all'utente.
     // 2 - Inserire generazione numero random.
+    // 3 - Mettere %u per unsigned int nella scanf.
 
     /* Dichiarazione delle variabili */
     unsigned int cont = 0; // Rappresenta il numero di tentativi fatti per indovinare il numero
@@ -38,7 +39,7 @@ int main() {
     printf("------------------------------\n");
 
     /* Controllo Min e Max */
-    // Richiedo l'inserimento di valori finchè max non è maggiore di min.
+    // Richiedo l'inserimento dei valori finchè max non è maggiore di min.
     while (!check)
     {
         printf("Inserisci l\'intervallo di ricerca (min max): ");
@@ -57,6 +58,7 @@ int main() {
     scanf("%c", &temp);
     fflush(stdin);
 
+    // Ci vorrà un altro while come quello posto sopra.
     switch (temp)
     {
         case '>':
@@ -72,6 +74,7 @@ int main() {
             break;
         default:
             printf("\nLa risposta da lei inserita non e\' valida, inserirne una corretta, per favore! (< | = | >)");
+            // do something here...
             break;
     }
 

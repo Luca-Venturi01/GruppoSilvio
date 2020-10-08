@@ -15,6 +15,7 @@
 /* Inclusione delle librerie */
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 int main() {
 
@@ -22,25 +23,36 @@ int main() {
     // 1 - Sarebbe da controllare che il numero il numero max sia > di min
     //     ma senza il while è un po' difficile, potrei fare uno scambio da codice se min > max magari
     //     notificarlo poi all'utente.
-    // 2 - Inserire %[^ ] nelle scanf.
+    // 2 - Inserire generazione numero random.
 
     /* Dichiarazione delle variabili */
     unsigned int cont = 0; // Rappresenta il numero di tentativi fatti per indovinare il numero
     int min, max; // Rappresentano l'intervallo di ricerca inserito in input dall'utente.
     char temp; // Rappresenta la rispota dell'utente ad ogni domanda posta.
     int num = 0; // Rappresenta la risposta fornita dal computer all'utente.
-
+    bool check = false; // Variabile usata per controllare che il valore min sia più piccolo di max.
+    bool preso = false; // Variabile usata per controllare se il "computer" ha azzeccato il numero.
 
     /* Input dei dati iniziali */
     printf("Esercizio 2: Pensa a un numero\n");
     printf("------------------------------\n");
-    printf("Inserisci l\'intervallo di ricerca (min max): ");
-    scanf("%d %d", &min, &max);
-    fflush(stdin); // Elimina eventuali caratteri indesiderati presenti in stdin.
-    printf("Bene! Ora pensa a un numero compreso tra %d e %d\n", min, max);
 
+    /* Controllo Min e Max */
+    // Richiedo l'inserimento di valori finchè max non è maggiore di min.
+    while (!check)
+    {
+        printf("Inserisci l\'intervallo di ricerca (min max): ");
+        scanf("%d %d", &min, &max);
+        fflush(stdin); // Elimina eventuali caratteri indesiderati presenti in stdin.
+        if(max > min)
+            check = true;
+        else
+            printf("Min non puo\' essere maggiore di Max, riprova!\n");      
+    }
+    
     /* Inizio del gioco */
     // Abbiamo scelto l'alternativa di gioco n. 2
+    printf("Bene! Ora pensa a un numero compreso tra %d e %d\n", min, max);
     printf("Il numero e\' minore (<), uguale (=) o maggiore (>) di %d? ", num = min);
     scanf("%c", &temp);
     fflush(stdin);
@@ -59,7 +71,7 @@ int main() {
             printf("\nPerfetto, allora hai pensato a %d!\n", num);
             break;
         default:
-            printf("\nIl carattere da lei inserito non e\' valido, inserire una risposta corretta, per favore! (< | = | >)");
+            printf("\nLa risposta da lei inserita non e\' valida, inserirne una corretta, per favore! (< | = | >)");
             break;
     }
 

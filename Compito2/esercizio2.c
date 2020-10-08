@@ -71,6 +71,23 @@ int main() {
             break;
         case '=':
             printf("\nPerfetto, allora hai pensato a %d!\n", num);
+            printf( "                                                               \n"
+                    "YYYYYYYY        YYYYYYYY    EEEEEEEEEEEEEEEEEE      SSSSSSSSSSS\n"
+                    "YYYYYYYY        YYYYYYYY    EEEEEEEEEEEEEEEEEE     SSSSSSSSSSSSS\n"
+                    "YYYYYYYY        YYYYYYYY    EEEEEEEEEEEEEEEEEE    SSSSSSSSSSSSSSS\n"
+                    "YYYYYYYY        YYYYYYYY    EEEEEEEEEEEEEEEEEE    SSSSSSSS    SSS\n"
+                    " YYYYYYYY      YYYYYYYY     EEEEEEEE              SSSSSSSS\n"
+                    "  YYYYYYYY    YYYYYYYY      EEEEEEEE              SSSSSSSS\n"
+                    "   YYYYYYYY  YYYYYYYY       EEEEEEEEEEEEE          SSSSSSSS\n"
+                    "    YYYYYYYYYYYYYYYY        EEEEEEEEEEEEE           SSSSSSSSSS\n"
+                    "     YYYYYYYYYYYYYY         EEEEEEEEEEEEE            SSSSSSSSSS\n"
+                    "      YYYYYYYYYYYY          EEEEEEEEEEEEE               SSSSSSSSS\n"
+                    "       YYYYYYYYYY           EEEEEEEE                     SSSSSSSS\n"
+                    "        YYYYYYYY            EEEEEEEE                     SSSSSSSS\n"
+                    "        YYYYYYYY            EEEEEEEEEEEEEEEEE     SSS    SSSSSSSS\n"
+                    "        YYYYYYYY            EEEEEEEEEEEEEEEEE     SSSSSSSSSSSSSSS\n"
+                    "        YYYYYYYY            EEEEEEEEEEEEEEEEE      SSSSSSSSSSSSS\n"
+                    "        YYYYYYYY            EEEEEEEEEEEEEEEEE       SSSSSSSSSSS\n");
             break;
         default:
             printf("\nLa risposta da lei inserita non e\' valida, inserirne una corretta, per favore! (< | = | >)");
@@ -81,7 +98,7 @@ int main() {
     /* Codice per Testing */
     // printf("Min: %d, Max: %d\n", min, max);
 
-    printf("\nPremi invio per chiudere il terminale.");
+    printf("\n\n\nPremi invio per chiudere il terminale...");
     getchar();
     return 0;
 }

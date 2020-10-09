@@ -21,14 +21,13 @@
 int main() {
 
     /* TODO: */
-    // 1 - Mettere %u per unsigned int nella scanf.
-    // 2 - Fix messaggio di while(!check) nel caso qualcuno inserisca una lettera e non dei numeri.
+    // 1 - Fix messaggio di while(!check) nel caso qualcuno inserisca una lettera e non dei numeri.
     
     /* IDEE: */
     // 1 - Fare dei commenti tipo SUMMARY come in C# per tipo le variabili?
 
     /* Dichiarazione delle variabili */
-    unsigned int cont = 1; // Rappresenta il numero di tentativi fatti per indovinare il numero
+    unsigned int cont = 0; // Rappresenta il numero di tentativi fatti per indovinare il numero
     int min, max; // Rappresentano l'intervallo di ricerca inserito in input dall'utente.
     int newMin, newMax; // Rappresentano il nuovo Min e Max dopo ogni tentativo di risposta.
     char temp; // Rappresenta la rispota dell'utente ad ogni domanda posta.
@@ -48,7 +47,8 @@ int main() {
         printf("Inserisci l\'intervallo di ricerca (min max): ");
         scanf("%d %d", &min, &max);
         fflush(stdin); // Elimina eventuali caratteri indesiderati presenti in stdin.
-        if(max > min)
+
+        if(max >= min && min > 0)
         {
             newMin = min;
             newMax = max;
@@ -56,8 +56,8 @@ int main() {
         }
         else if(min > max)
             printf("Min non puo\' essere maggiore di Max, riprova!\n");
-        else
-            printf("Min non puo\' essere uguale a Max, riprova!\n");      
+        else if(min < 0)
+            printf("Min non puo\' essere minore di 0 (ovvero un numero negativo)!\n");
     }
     
     /* Inizio del gioco */
@@ -72,6 +72,7 @@ int main() {
         printf("Il numero e\' minore (<), uguale (=) o maggiore (>) di %d? ", random);
         scanf("%c", &temp);
         fflush(stdin);
+        cont++;
 
         switch (temp)
         {

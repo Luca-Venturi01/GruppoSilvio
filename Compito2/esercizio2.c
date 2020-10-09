@@ -49,7 +49,11 @@ int main() {
         scanf("%d %d", &min, &max);
         fflush(stdin); // Elimina eventuali caratteri indesiderati presenti in stdin.
         if(max > min)
+        {
+            newMin = min;
+            newMax = max;
             check = true;
+        }
         else if(min > max)
             printf("Min non puo\' essere maggiore di Max, riprova!\n");
         else
@@ -73,19 +77,23 @@ int main() {
         {
             case '>':
                 newMin = random + 1;
-                
-                if ( newMin > max)
+
+                if(newMin > max)
                     printf("Il numero a cui hai pensato e\' maggiore del massimo fornito in input!\n");
+                else if (newMin > newMax)
+                    printf("Non esiste un numero tra %d e %d\n", newMax, newMin);
                 else
-                    random = newMin + (rand()+time(NULL))%(max+1-newMin);
+                    random = newMin + (rand()+time(NULL))%(newMax+1-newMin);
                 break;
             case '<':
                 newMax = random - 1;
 
-                if ( newMax < min )
-                    printf("Il numero a cui hai pensato e\' minore del minimo fornito in input!\n");
+                if(newMax < min)
+                    printf("Il numero a cui hai pensato e\' minore del minore fornito in input!\n");
+                else if (newMax < newMin)
+                    printf("Non esiste un numero tra %d e %d\n", newMax, newMin);
                 else
-                    random = min + (rand()+time(NULL))%(newMax+1-min);
+                    random = newMin + (rand()+time(NULL))%(newMax+1-newMin);
                 break;
             case '=':
                 printf("\nPerfetto, allora hai pensato a %d!\n", random);
@@ -111,7 +119,6 @@ int main() {
                 break;
             default:
                 printf("\nLa risposta da lei inserita non e\' valida, inserirne una corretta, per favore! (< | = | >)\n");
-                // do something here...
                 break;
         }
     }

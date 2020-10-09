@@ -1,0 +1,13 @@
+            case '>':
+                // oldRandom = random;
+                random = random + (rand()+time(NULL))%(max+1-min); // Versione prof.
+                // random = (rand() % (max - (random+1) + 1)) + (random+1); // Il nuovo min diventa il numero random
+
+                // if(random == oldRandom || random > max || random < min)
+                //     random = random + (rand()+time(NULL))%(max+1-min);
+                // else
+                //     break;
+            case '<':
+                oldRandom = random;
+                random = min + (rand()+time(NULL))%(random+1-min); // Versione prof
+                // random = (rand() % ((random-1) - min + 1)) + min; // Il nuovo max diventa il numero random

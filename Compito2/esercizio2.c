@@ -16,21 +16,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 
 int main() {
 
     /* TODO: */
-    // 1 - Sarebbe da controllare che il numero il numero max sia > di min
-    //     ma senza il while è un po' difficile, potrei fare uno scambio da codice se min > max magari
-    //     notificarlo poi all'utente.
-    // 2 - Inserire generazione numero random.
-    // 3 - Mettere %u per unsigned int nella scanf.
+    // 1 - Mettere %u per unsigned int nella scanf.
+    // 2 - Fix messaggio di while(!check) nel caso qualcuno inserisca una lettera e non dei numeri.
+    
+    /* IDEE: */
+    // 1 - Fare dei commenti tipo SUMMARY come in C# per tipo le variabili?
 
     /* Dichiarazione delle variabili */
-    unsigned int cont = 0; // Rappresenta il numero di tentativi fatti per indovinare il numero
+    unsigned int cont = 1; // Rappresenta il numero di tentativi fatti per indovinare il numero
     int min, max; // Rappresentano l'intervallo di ricerca inserito in input dall'utente.
+    int newMin, newMax; // Rappresentano il nuovo Min e Max dopo ogni tentativo di risposta.
     char temp; // Rappresenta la rispota dell'utente ad ogni domanda posta.
-    int num = 0; // Rappresenta la risposta fornita dal computer all'utente.
+    int random = 0; // Rappresenta il numero random fornito come risposta dal computer all'utente.
+    // int oldRandom; // Rappresenta una copia temporanea del valore random generato.
     bool check = false; // Variabile usata per controllare che il valore min sia più piccolo di max.
     bool preso = false; // Variabile usata per controllare se il "computer" ha azzeccato il numero.
 
@@ -47,56 +50,77 @@ int main() {
         fflush(stdin); // Elimina eventuali caratteri indesiderati presenti in stdin.
         if(max > min)
             check = true;
+        else if(min > max)
+            printf("Min non puo\' essere maggiore di Max, riprova!\n");
         else
-            printf("Min non puo\' essere maggiore di Max, riprova!\n");      
+            printf("Min non puo\' essere uguale a Max, riprova!\n");      
     }
     
     /* Inizio del gioco */
     // Abbiamo scelto l'alternativa di gioco n. 2
     printf("Bene! Ora pensa a un numero compreso tra %d e %d\n", min, max);
-    printf("Il numero e\' minore (<), uguale (=) o maggiore (>) di %d? ", num = min);
-    scanf("%c", &temp);
-    fflush(stdin);
 
-    // Ci vorrà un altro while come quello posto sopra.
-    switch (temp)
+    /* Generazione numero random (pseudo-casuale) */
+    random = min + (rand()+time(NULL))%(max+1-min);
+
+    while (!preso)
     {
-        case '>':
-            printf("\nHai inserito maggiore");
-            // do something here...
-            break;
-        case '<':
-            printf("\nHai inserito minore");
-            // do something here...
-            break;
-        case '=':
-            printf("\nPerfetto, allora hai pensato a %d!\n", num);
-            printf( "                                                               \n"
-                    "YYYYYYYY        YYYYYYYY    EEEEEEEEEEEEEEEEEE      SSSSSSSSSSS\n"
-                    "YYYYYYYY        YYYYYYYY    EEEEEEEEEEEEEEEEEE     SSSSSSSSSSSSS\n"
-                    "YYYYYYYY        YYYYYYYY    EEEEEEEEEEEEEEEEEE    SSSSSSSSSSSSSSS\n"
-                    "YYYYYYYY        YYYYYYYY    EEEEEEEEEEEEEEEEEE    SSSSSSSS    SSS\n"
-                    " YYYYYYYY      YYYYYYYY     EEEEEEEE              SSSSSSSS\n"
-                    "  YYYYYYYY    YYYYYYYY      EEEEEEEE              SSSSSSSS\n"
-                    "   YYYYYYYY  YYYYYYYY       EEEEEEEEEEEEE          SSSSSSSS\n"
-                    "    YYYYYYYYYYYYYYYY        EEEEEEEEEEEEE           SSSSSSSSSS\n"
-                    "     YYYYYYYYYYYYYY         EEEEEEEEEEEEE            SSSSSSSSSS\n"
-                    "      YYYYYYYYYYYY          EEEEEEEEEEEEE               SSSSSSSSS\n"
-                    "       YYYYYYYYYY           EEEEEEEE                     SSSSSSSS\n"
-                    "        YYYYYYYY            EEEEEEEE                     SSSSSSSS\n"
-                    "        YYYYYYYY            EEEEEEEEEEEEEEEEE     SSS    SSSSSSSS\n"
-                    "        YYYYYYYY            EEEEEEEEEEEEEEEEE     SSSSSSSSSSSSSSS\n"
-                    "        YYYYYYYY            EEEEEEEEEEEEEEEEE      SSSSSSSSSSSSS\n"
-                    "        YYYYYYYY            EEEEEEEEEEEEEEEEE       SSSSSSSSSSS\n");
-            break;
-        default:
-            printf("\nLa risposta da lei inserita non e\' valida, inserirne una corretta, per favore! (< | = | >)");
-            // do something here...
-            break;
+        printf("Il numero e\' minore (<), uguale (=) o maggiore (>) di %d? ", random);
+        scanf("%c", &temp);
+        fflush(stdin);
+
+        switch (temp)
+        {
+            case '>':
+                newMin = random + 1;
+                
+                if ( newMin > max)
+                    printf("Il numero a cui hai pensato e\' maggiore del massimo fornito in input!\n");
+                else
+                    random = newMin + (rand()+time(NULL))%(max+1-newMin);
+                break;
+            case '<':
+                newMax = random - 1;
+
+                if ( newMax < min )
+                    printf("Il numero a cui hai pensato e\' minore del minimo fornito in input!\n");
+                else
+                    random = min + (rand()+time(NULL))%(newMax+1-min);
+                break;
+            case '=':
+                printf("\nPerfetto, allora hai pensato a %d!\n", random);
+                printf( "                                                               \n"
+                        "YYYYYYYY        YYYYYYYY    EEEEEEEEEEEEEEEEEE      SSSSSSSSSSS\n"
+                        "YYYYYYYY        YYYYYYYY    EEEEEEEEEEEEEEEEEE     SSSSSSSSSSSSS\n"
+                        "YYYYYYYY        YYYYYYYY    EEEEEEEEEEEEEEEEEE    SSSSSSSSSSSSSSS\n"
+                        "YYYYYYYY        YYYYYYYY    EEEEEEEEEEEEEEEEEE    SSSSSSSS    SSS\n"
+                        " YYYYYYYY      YYYYYYYY     EEEEEEEE              SSSSSSSS\n"
+                        "  YYYYYYYY    YYYYYYYY      EEEEEEEE              SSSSSSSS\n"
+                        "   YYYYYYYY  YYYYYYYY       EEEEEEEEEEEEE          SSSSSSSS\n"
+                        "    YYYYYYYYYYYYYYYY        EEEEEEEEEEEEE           SSSSSSSSSS\n"
+                        "     YYYYYYYYYYYYYY         EEEEEEEEEEEEE            SSSSSSSSSS\n"
+                        "      YYYYYYYYYYYY          EEEEEEEEEEEEE               SSSSSSSSS\n"
+                        "       YYYYYYYYYY           EEEEEEEE                     SSSSSSSS\n"
+                        "        YYYYYYYY            EEEEEEEE                     SSSSSSSS\n"
+                        "        YYYYYYYY            EEEEEEEEEEEEEEEEE     SSS    SSSSSSSS\n"
+                        "        YYYYYYYY            EEEEEEEEEEEEEEEEE     SSSSSSSSSSSSSSS\n"
+                        "        YYYYYYYY            EEEEEEEEEEEEEEEEE      SSSSSSSSSSSSS\n"
+                        "        YYYYYYYY            EEEEEEEEEEEEEEEEE       SSSSSSSSSSS\n");
+                preso = true;
+                printf("\n\nRiepilogo:\nNumero: %d, tentativi richiesti: %d", random, cont);
+                break;
+            default:
+                printf("\nLa risposta da lei inserita non e\' valida, inserirne una corretta, per favore! (< | = | >)\n");
+                // do something here...
+                break;
+        }
     }
+    
+
 
     /* Codice per Testing */
     // printf("Min: %d, Max: %d\n", min, max);
+    // printf("%d", random);
 
     printf("\n\n\nPremi invio per chiudere il terminale...");
     getchar();

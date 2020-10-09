@@ -37,8 +37,8 @@ int main() {
     bool preso = false; // Variabile usata per controllare se il "computer" ha azzeccato il numero.
 
     /* Input dei dati iniziali */
-    printf("Esercizio 2: Pensa a un numero\n");
-    printf("------------------------------\n");
+    printf("Esercizio 2: Pensa a un numero|\n");
+    printf("-------------------------------\n");
 
     /* Controllo Min e Max */
     // Richiedo l'inserimento dei valori finchè max non è maggiore di min.

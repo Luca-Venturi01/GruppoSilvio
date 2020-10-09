@@ -82,7 +82,7 @@ int main() {
                 if(newMin > max)
                     printf("Il numero a cui hai pensato e\' maggiore del massimo fornito in input!\n");
                 else if (newMin > newMax)
-                    printf("Non esiste un numero tra %d e %d\n", newMax, newMin);
+                    printf("Non esiste un numero tra %d e %d\n", newMin-1, newMax+1);
                 else
                     random = newMin + (rand()+time(NULL))%(newMax+1-newMin);
                 break;
@@ -92,7 +92,7 @@ int main() {
                 if(newMax < min)
                     printf("Il numero a cui hai pensato e\' minore del minore fornito in input!\n");
                 else if (newMax < newMin)
-                    printf("Non esiste un numero tra %d e %d\n", newMax, newMin);
+                    printf("Non esiste un numero tra %d e %d\n", newMin-1, newMax+1);
                 else
                     random = newMin + (rand()+time(NULL))%(newMax+1-newMin);
                 break;
@@ -124,7 +124,6 @@ int main() {
         }
     }
     
-
 
     /* Codice per Testing */
     // printf("Min: %d, Max: %d\n", min, max);

@@ -20,6 +20,12 @@
 
 int main() {
 
+    /* TODO: */
+    // 1 - Fix messaggio di while(!check) nel caso qualcuno inserisca una lettera e non dei numeri.
+    
+    /* IDEE: */
+    // 1 - Fare dei commenti tipo SUMMARY come in C# per tipo le variabili?
+
     /* Dichiarazione delle variabili */
     unsigned int cont = 0; // Rappresenta il numero di tentativi fatti per indovinare il numero
     int min, max; // Rappresentano l'intervallo di ricerca inserito in input dall'utente.
@@ -61,8 +67,6 @@ int main() {
     /* Generazione numero random (pseudo-casuale) */
     random = min + (rand()+time(NULL))%(max+1-min);
 
-    /* Inizio effettivo del gioco */
-    // Il ciclo continua fino a quando il numero scelto dall'utente non viene azzeccato.
     while (!preso)
     {
         printf("Il numero e\' minore (<), uguale (=) o maggiore (>) di %d? ", random);
@@ -70,7 +74,6 @@ int main() {
         fflush(stdin);
         cont++;
 
-        // Gestisco ogni possibile risposta dell'utente.
         switch (temp)
         {
             case '>':
@@ -121,8 +124,12 @@ int main() {
         }
     }
     
+
+    /* Codice per Testing */
+    // printf("Min: %d, Max: %d\n", min, max);
+    // printf("%d", random);
+
     printf("\n\n\nPremi invio per chiudere il terminale...");
     getchar();
     return 0;
-
 }

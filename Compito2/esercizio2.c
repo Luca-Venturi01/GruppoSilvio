@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
+#include <ctype.h>
 
 int main() {
 
@@ -24,8 +25,9 @@ int main() {
     unsigned int cont = 0; // Rappresenta il numero di tentativi fatti per indovinare il numero
     int min, max; // Rappresentano l'intervallo di ricerca inserito in input dall'utente.
     int newMin, newMax; // Rappresentano il nuovo Min e Max dopo ogni tentativo di risposta.
-    char temp; // Rappresenta la rispota dell'utente ad ogni domanda posta.
     int random = 0; // Rappresenta il numero random fornito come risposta dal computer all'utente.
+    int scanfReturn = 0; // Rappresenta il valore restituito dalla funzione scanf e server per controllare che l'utente abbia inserito correttamente 2 numeri.
+    char temp; // Rappresenta la rispota dell'utente ad ogni domanda posta.
     // int oldRandom; // Rappresenta una copia temporanea del valore random generato.
     bool check = false; // Variabile usata per controllare che il valore min sia più piccolo di max.
     bool preso = false; // Variabile usata per controllare se il "computer" ha azzeccato il numero.
@@ -39,15 +41,17 @@ int main() {
     while (!check)
     {
         printf("Inserisci l\'intervallo di ricerca (min max): ");
-        scanf("%d %d", &min, &max);
+        scanfReturn = scanf("%d %d", &min, &max);
         fflush(stdin); // Elimina eventuali caratteri indesiderati presenti in stdin.
 
-        if(max >= min && min > 0)
+        if(max >= min && min > 0 && scanfReturn == 2)
         {
             newMin = min;
             newMax = max;
             check = true;
         }
+        else if(scanfReturn != 2)
+            printf("L'input dei valori min e max non e\' corretto, per favore inserisci solo dei numeri!\n");
         else if(min > max)
             printf("Min non puo\' essere maggiore di Max, riprova!\n");
         else if(min < 0)

@@ -21,15 +21,14 @@
 int main() {
 
     /* Dichiarazione delle variabili */
-    unsigned int cont = 0; // Rappresenta il numero di tentativi fatti per indovinare il numero
+    unsigned int cont = 0; // Rappresenta il numero di tentativi fatti per indovinare il numero.
     int min, max; // Rappresentano l'intervallo di ricerca inserito in input dall'utente.
     int newMin, newMax; // Rappresentano il nuovo Min e Max dopo ogni tentativo di risposta.
     int random = 0; // Rappresenta il numero random fornito come risposta dal computer all'utente.
     int scanfReturn = 0; // Rappresenta il valore restituito dalla funzione scanf e server per controllare che l'utente abbia inserito correttamente 2 numeri.
     char temp; // Rappresenta la rispota dell'utente ad ogni domanda posta.
-    // int oldRandom; // Rappresenta una copia temporanea del valore random generato.
     bool check = false; // Variabile usata per controllare che il valore min sia più piccolo di max.
-    bool preso = false; // Variabile usata per controllare se il "computer" ha azzeccato il numero.
+    bool preso = false; // Variabile usata per controllare se il "computer" ha indovinato il numero.
 
     /* Input dei dati iniziali */
     printf("Esercizio 2: Pensa a un numero|\n");
@@ -58,7 +57,7 @@ int main() {
     }
     
     /* Inizio del gioco */
-    // Abbiamo scelto l'alternativa di gioco n. 2
+    // Abbiamo scelto l'alternativa di gioco n. 2.
     printf("Bene! Ora pensa a un numero compreso tra %d e %d\n", min, max);
 
     /* Generazione numero random (pseudo-casuale) */
@@ -76,7 +75,7 @@ int main() {
         // Gestisco ogni possibile risposta dell'utente.
         switch (temp)
         {
-            case '>':
+            case '>': // Caso in cui il numero pensato dall'utente è maggiore rispetto a quello generato.
                 newMin = random + 1;
 
                 if(newMin > max)
@@ -86,7 +85,7 @@ int main() {
                 else
                     random = newMin + (rand()+time(NULL))%(newMax+1-newMin);
                 break;
-            case '<':
+            case '<': // Caso in cui il numero pensato dall'utente è minore rispetto a quello generato.
                 newMax = random - 1;
 
                 if(newMax < min)
@@ -96,7 +95,7 @@ int main() {
                 else
                     random = newMin + (rand()+time(NULL))%(newMax+1-newMin);
                 break;
-            case '=':
+            case '=': // Caso in cui il numero pensato dall'utente è uguale rispetto a quello generato.
                 printf("\nPerfetto, allora hai pensato a %d!\n", random);
                 printf( "                                                               \n"
                         "YYYYYYYY        YYYYYYYY    EEEEEEEEEEEEEEEEEE      SSSSSSSSSSS\n"
@@ -118,7 +117,7 @@ int main() {
                 preso = true;
                 printf("\n\nRiepilogo:\nNumero: %d, tentativi richiesti: %d", random, cont);
                 break;
-            default:
+            default: // Caso in cui l'utente inserisce una risposta non valida.
                 printf("\nLa risposta da lei inserita non e\' valida, inserirne una corretta, per favore! (< | = | >)\n");
                 break;
         }

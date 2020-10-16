@@ -91,6 +91,7 @@ int main() {
                 if((giorno + i - 1) % 7 == 0)
                     printf("\n");
             }
+
             printf("\n");
         }
         else if(mese == 2 && isBisestile == true)

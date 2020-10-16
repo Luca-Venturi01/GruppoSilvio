@@ -13,6 +13,9 @@
 #include <time.h>
 
 int main() {
+    // TODO:
+    // 1 - Sistemare giorni bianchi passando da mese a mese --> Basta aggiornare la variabile giorno (tipo uguale a i, dove i è l'ultimo giorno del mese precedente).
+    // 2 - Allineare printf del nome del mese.
 
     /* Dichiarazione delle variabili */
     short int anno = 0; // Variabile che rappresenta l'anno inserito dall'utente.
@@ -21,7 +24,7 @@ int main() {
     bool inputCheck = false; // Variabile utilizzata per controllare che l'input dei dati avvenga correttamente.
     bool isBisestile;
     
-    /* Inizio del programma */
+    /* Inizio effettivo del programma */
     printf("Il Calendario in C\n");
     printf("------------------\n");
 
@@ -57,6 +60,77 @@ int main() {
 
     // Output del risultato del controllo con tanto di riepilogo dei dati.
     printf("\nRiepilogo dati inseriti:\n\tAnno: %d, \tGiorno: %d, \tBisestile: %s", anno, giorno, isBisestile? "Sì" : "No");
+
+    /* Mostra Calendario */
+    printf("\n\n\nCalendario, Anno: %hd\n\n", anno);
+
+    // Scrittura effettiva del calendario.
+    // Ciclo for per tutti i mesi, 1 = Gennaio e 12 = Dicembre.
+    for(int mese = 1; mese < 13; mese++){
+
+        if(mese == 1 || mese == 3 || mese ==5 || mese ==7 || mese ==8 || mese == 10 || mese ==12) // Mesi con 31 giorni
+        {
+            switch (mese)
+            {
+                case 1: printf("\n--------Gennaio--------\n"); break;
+                case 3: printf("\n--------Marzo--------\n"); break;
+                case 5: printf("\n--------Maggio--------\n"); break;
+                case 7: printf("\n--------Luglio--------\n"); break;
+                case 8: printf("\n--------Agosto--------\n"); break;
+                case 10: printf("\n--------Ottobre--------\n"); break;
+                case 12: printf("\n--------Dicembre--------\n"); break;
+            }
+
+            // Spazi bianchi da mettere in base al giorno di partenza scelto dall'utente.
+            for(int i = 1; i < giorno; i++)
+                printf(" ");
+
+            for(int i = 1; i <= 31; i++){
+                printf("%3d", i);
+                if((giorno + i - 1) % 7 == 0)
+                    printf("\n");
+            }
+            printf("\n");
+        }
+        else if(mese == 2 && isBisestile == true)
+        {
+            printf("\n--------Febbraio--------\n");
+            for(int i = 1; i <= 29; i++){
+            printf("%3d", i);
+            if((giorno + i - 1) % 7 == 0)
+                printf("\n");
+            }
+            printf("\n");
+        }
+        else if(mese == 2 && isBisestile == false)
+        {
+            printf("\n--------Febbraio--------\n");
+            for(int i = 1; i <= 28; i++){
+            printf("%3d", i);
+            if((giorno + i - 1) % 7 == 0)
+                printf("\n");
+            }
+            printf("\n");
+        }
+        else
+        {
+            switch (mese)
+            {
+                case 4: printf("\n--------Aprile--------\n"); break;
+                case 6: printf("\n--------Giugno--------\n"); break;
+                case 9: printf("\n--------Settembre--------\n"); break;
+                case 11: printf("\n--------Novembre--------\n"); break;
+            }
+            for(int i = 1; i <= 30; i++){
+            printf("%3d", i);
+            if((giorno + i - 1) % 7 == 0)
+                printf("\n");
+            }
+            printf("\n");
+        }
+        
+
+    }
 
     // Comando che invita l'utente a premere il tasto "invio" per chiudere il programma.    
     printf("\n\n\nPremi invio per chiudere il terminale...");

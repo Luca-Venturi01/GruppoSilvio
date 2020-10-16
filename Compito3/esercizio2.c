@@ -16,6 +16,8 @@ int main() {
     // TODO:
     // 1 - Sistemare giorni bianchi passando da mese a mese --> Basta aggiornare la variabile giorno (tipo uguale a i, dove i è l'ultimo giorno del mese precedente).
     // 2 - Aggiungere nome giorni (tipo: Lun Mar.... fare tipo %4 o %5d così tutto allineamento anche con i nomi dei giorni + lunghi).
+    // i+1 diventa il nuovo giorno, altrimenti potrebbe essere >7
+
 
     /* Dichiarazione delle variabili */
     short int anno = 0; // Variabile che rappresenta l'anno inserito dall'utente.

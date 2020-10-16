@@ -13,44 +13,48 @@
 #include <time.h>
 
 int main() {
-    // TODO:
-    // 1 - Aggiungere nome giorni (tipo: Lun Mar.... fare tipo %4 o %5d così tutto allineamento anche con i nomi dei giorni + lunghi).
 
     /* Dichiarazione delle variabili */
     short int anno = 0; // Variabile che rappresenta l'anno inserito dall'utente.
     short int giorno = 0; // Variabile che rappresenta il giorno inserito dall'utente.
     short int scanfReturn = 0; // Variabile utilizzata per controllare se la scanf ha ricevuto quello che si aspettava.
-    short int tempDay = 0; // Variabile utilizzata per poter tener traccia del giorno finale di ogni mese.
+    short int nGiorni = 0; // Variabile utilizzata per definire quanti giorni ha ogni mese.
     bool inputCheck = false; // Variabile utilizzata per controllare che l'input dei dati avvenga correttamente.
-    bool isBisestile;
+    bool isBisestile; // Variabile utilizzata per indicare se l'anno è bisestile oppure no.
 
     /* Inizio effettivo del programma */
     printf("Il Calendario in C\n");
-    printf("------------------\n");
+    printf("-----------------------------------\n");
 
     /* Input dei dati */
+    // Controllo sull'anno.
     while (!inputCheck)
     {
-        // Anno
         printf("Inserisci l'anno in oggetto: ");
         scanfReturn = scanf("%hd", &anno);
         fflush(stdin);
         if(anno > 0 && anno < 3000 && scanfReturn == 1)
         {
-            // Giorno
-            printf("\nInserisci il giorno: ");
-            scanfReturn = scanf("%hd", &giorno);
-            fflush(stdin);
-            if(giorno > 0 && giorno < 8 && scanfReturn == 1)
-                inputCheck = true;
-            else
-                printf("Per favore, inserisci un giorno valido (solo un numero >0 e <8)!\n");
+            inputCheck = true;
         }
         else
             printf("Per favore, inserisci un anno corretto (solo un numero >0 e <3000)!\n");
     }
 
-    /* Controllo se l'anno è bisestile */
+    // Controllo sul giorno.
+    inputCheck = false;
+    while (!inputCheck)
+    {
+        printf("\nInserisci il giorno: ");
+        scanfReturn = scanf("%hd", &giorno);
+        fflush(stdin);
+        if(giorno > 0 && giorno < 8 && scanfReturn == 1)
+            inputCheck = true;
+        else
+            printf("Per favore, inserisci un giorno valido (solo un numero >0 e <8)!\n");
+    }
+
+    /* Controllo se l'anno è bisestivo */
     if((anno % 400) == 0)
         isBisestile = true;
     else if((anno % 4) == 0 && (anno % 100) != 0)
@@ -60,99 +64,46 @@ int main() {
 
     // Output del risultato del controllo con tanto di riepilogo dei dati.
     printf("\nRiepilogo dati inseriti:\n\tAnno: %d, \n\tGiorno: %d, \n\tBisestile: %s", anno, giorno, isBisestile? "Si\'." : "No.");
+    printf("\n-----------------------------------");
 
     /* Mostra Calendario */
-    printf("\n\n\nCalendario, Anno: %hd\n\n", anno);
+    printf("\n\nCalendario, Anno: %hd\n\n", anno);
 
-    // Scrittura effettiva del calendario.
+    /* Scrittura effettiva del calendario. */
     // Ciclo for per tutti i mesi, 1 = Gennaio e 12 = Dicembre.
     for(int mese = 1; mese < 13; mese++){
-
-        if(mese == 1 || mese == 3 || mese ==5 || mese ==7 || mese ==8 || mese == 10 || mese ==12) // Mesi con 31 giorni
+        switch (mese)
         {
-
-            switch (mese)
-            {
-                case 1: printf("\n--------Gennaio--------\n"); break;
-                case 3: printf("\n--------Marzo--------\n"); break;
-                case 5: printf("\n--------Maggio--------\n"); break;
-                case 7: printf("\n--------Luglio--------\n"); break;
-                case 8: printf("\n--------Agosto--------\n"); break;
-                case 10: printf("\n--------Ottobre--------\n"); break;
-                case 12: printf("\n--------Dicembre--------\n"); break;
-            }
-
-            // Spazi bianchi da mettere in base al giorno di partenza scelto dall'utente.
-            for(int i = 1; i < giorno; i++)
-                printf("   ");
-
-            for(int i = 1; i <= 31; i++){
-                printf("%3d", i);
-                if((giorno + i - 1) % 7 == 0)
-                    printf("\n");
-                if(i==31)
-                    giorno = (giorno + i - 1) % 7 + 1;
-            }
-
-            printf("\n");
+            case 1: printf("\n-------------Gennaio---------------\n"); nGiorni=31; break;
+            case 2: printf("\n-------------Febbraio--------------\n"); nGiorni=isBisestile?29:28; break;
+            case 3: printf("\n-------------Marzo-----------------\n"); nGiorni=31; break;
+            case 4: printf("\n-------------Aprile----------------\n"); nGiorni=30; break;
+            case 5: printf("\n-------------Maggio----------------\n"); nGiorni=31; break;
+            case 6: printf("\n-------------Giugno----------------\n"); nGiorni=30; break;
+            case 7: printf("\n-------------Luglio----------------\n"); nGiorni=31; break;
+            case 8: printf("\n-------------Agosto----------------\n"); nGiorni=31; break;
+            case 9: printf("\n-------------Settembre-------------\n"); nGiorni=30; break;
+            case 10: printf("\n-------------Ottobre---------------\n"); nGiorni=31; break;
+            case 11: printf("\n-------------Novembre--------------\n"); nGiorni=30; break;
+            case 12: printf("\n-------------Dicembre--------------\n"); nGiorni=31; break;
         }
-        else if(mese == 2 && isBisestile == true)
-        {
-            printf("\n--------Febbraio--------\n");
 
-            for(int i = 1; i < giorno; i++)
-                printf("   ");
+        printf("  Lun  Mar  Mer  Gio  Ven  Sab  Dom\n");
 
-            for(int i = 1; i <= 29; i++){
-                printf("%3d", i);
-                if((giorno + i - 1) % 7 == 0)
-                    printf("\n");
-                if(i==29)
-                    giorno = (giorno + i - 1) % 7 + 1;
-            }
+        // Inserimento spazi bianchi in base al giorno di partenza scelto dall'utente.
+        for(int i = 1; i < giorno; i++)
+            printf("     ");
 
-            printf("\n");
+        // Scrittura effettiva dei giorni.
+        for(int i = 1; i <= nGiorni; i++){
+            printf("%5d", i);
+            if((giorno + i - 1) % 7 == 0)
+                printf("\n");
+            if(i == nGiorni)
+                giorno = (giorno + i - 1) % 7 + 1;
         }
-        else if(mese == 2 && isBisestile == false)
-        {
-            printf("\n--------Febbraio--------\n");
 
-            for(int i = 1; i < giorno; i++)
-                printf("   ");
-
-            for(int i = 1; i <= 28; i++){
-                printf("%3d", i);
-                if((giorno + i - 1) % 7 == 0)
-                    printf("\n");
-                if(i==28)
-                    giorno = (giorno + i - 1) % 7 + 1;
-            }
-
-            printf("\n");
-        }
-        else
-        {
-            switch (mese)
-            {
-                case 4: printf("\n--------Aprile--------\n"); break;
-                case 6: printf("\n--------Giugno--------\n"); break;
-                case 9: printf("\n--------Settembre--------\n"); break;
-                case 11: printf("\n--------Novembre--------\n"); break;
-            }
-
-            for(int i = 1; i < giorno; i++)
-                printf("   ");
-
-            for(int i = 1; i <= 30; i++){
-                printf("%3d", i);
-                if((giorno + i - 1) % 7 == 0)
-                    printf("\n");
-                if(i==30)
-                    giorno = (giorno + i - 1) % 7 + 1;
-            }
-
-            printf("\n");
-        }
+        printf("\n\n");
 
     }
 

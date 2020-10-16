@@ -14,8 +14,7 @@
 
 int main() {
     // TODO:
-    // 1 - Sistemare giorni bianchi passando da mese a mese --> Basta aggiornare la variabile giorno (tipo uguale a i, dove i è l'ultimo giorno del mese precedente).
-    // 2 - Aggiungere nome giorni (tipo: Lun Mar.... fare tipo %4 o %5d così tutto allineamento anche con i nomi dei giorni + lunghi).
+    // 1 - Aggiungere nome giorni (tipo: Lun Mar.... fare tipo %4 o %5d così tutto allineamento anche con i nomi dei giorni + lunghi).
 
     /* Dichiarazione delle variabili */
     short int anno = 0; // Variabile che rappresenta l'anno inserito dall'utente.
@@ -71,6 +70,7 @@ int main() {
 
         if(mese == 1 || mese == 3 || mese ==5 || mese ==7 || mese ==8 || mese == 10 || mese ==12) // Mesi con 31 giorni
         {
+
             switch (mese)
             {
                 case 1: printf("\n--------Gennaio--------\n"); break;
@@ -110,6 +110,7 @@ int main() {
                 if(i==29)
                     giorno = (giorno + i - 1) % 7 + 1;
             }
+
             printf("\n");
         }
         else if(mese == 2 && isBisestile == false)
@@ -126,6 +127,7 @@ int main() {
                 if(i==28)
                     giorno = (giorno + i - 1) % 7 + 1;
             }
+
             printf("\n");
         }
         else
@@ -151,7 +153,6 @@ int main() {
 
             printf("\n");
         }
-
 
     }
 

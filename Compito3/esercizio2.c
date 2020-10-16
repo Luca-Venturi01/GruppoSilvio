@@ -16,6 +16,7 @@ int main() {
     // TODO:
     // 1 - Sistemare giorni bianchi passando da mese a mese --> Basta aggiornare la variabile giorno (tipo uguale a i, dove i è l'ultimo giorno del mese precedente).
     // 2 - Allineare printf del nome del mese.
+    // 3 - Sistemare printf dei giorni...il codice della prof non va!
 
     /* Dichiarazione delle variabili */
     short int anno = 0; // Variabile che rappresenta l'anno inserito dall'utente.

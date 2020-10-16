@@ -90,6 +90,8 @@ int main() {
                 printf("%3d", i);
                 if((giorno + i - 1) % 7 == 0)
                     printf("\n");
+                if(i==31)
+                    giorno = (giorno + i - 1) % 7 + 1;
             }
 
             printf("\n");
@@ -97,20 +99,32 @@ int main() {
         else if(mese == 2 && isBisestile == true)
         {
             printf("\n--------Febbraio--------\n");
+
+            for(int i = 1; i < giorno; i++)
+                printf("   ");
+
             for(int i = 1; i <= 29; i++){
-            printf("%3d", i);
-            if((giorno + i - 1) % 7 == 0)
-                printf("\n");
+                printf("%3d", i);
+                if((giorno + i - 1) % 7 == 0)
+                    printf("\n");
+                if(i==29)
+                    giorno = (giorno + i - 1) % 7 + 1;
             }
             printf("\n");
         }
         else if(mese == 2 && isBisestile == false)
         {
             printf("\n--------Febbraio--------\n");
+
+            for(int i = 1; i < giorno; i++)
+                printf("   ");
+
             for(int i = 1; i <= 28; i++){
-            printf("%3d", i);
-            if((giorno + i - 1) % 7 == 0)
-                printf("\n");
+                printf("%3d", i);
+                if((giorno + i - 1) % 7 == 0)
+                    printf("\n");
+                if(i==28)
+                    giorno = (giorno + i - 1) % 7 + 1;
             }
             printf("\n");
         }
@@ -123,11 +137,18 @@ int main() {
                 case 9: printf("\n--------Settembre--------\n"); break;
                 case 11: printf("\n--------Novembre--------\n"); break;
             }
+
+            for(int i = 1; i < giorno; i++)
+                printf("   ");
+
             for(int i = 1; i <= 30; i++){
-            printf("%3d", i);
-            if((giorno + i - 1) % 7 == 0)
-                printf("\n");
+                printf("%3d", i);
+                if((giorno + i - 1) % 7 == 0)
+                    printf("\n");
+                if(i==30)
+                    giorno = (giorno + i - 1) % 7 + 1;
             }
+
             printf("\n");
         }
 
@@ -138,9 +159,5 @@ int main() {
     printf("\n\n\nPremi invio per chiudere il terminale...");
     getchar();
     return 0;
-
-    // Al momento:
-    // GCC: Process terminated with status 0 (0 minute(s), 0 second(s)) 0 error(s), 0 warning(s) (0 minute(s), 0 second(s))
-
 
 }

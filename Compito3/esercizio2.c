@@ -1,8 +1,8 @@
 /**HEADER********************************************************************
  *  AUTORI: Lorenzo Gessi, Andrea Bedei, Fabio Notaro e Luca Venturi.
  *  EMAIL:  lorenzo.gessi@studio.unibo.it, andrea.bedei2@studio.unibo.it, fabio.notaro2@studio.unibo.it, luca.venturi29@studio.unibo.it
- *  DATA:   
- *  ES n.2: Scrivere un programma C che stampi il calendario di un anno, chiedendo all'utente di specificare 
+ *  DATA:
+ *  ES n.2: Scrivere un programma C che stampi il calendario di un anno, chiedendo all'utente di specificare
             l'anno in oggetto e il numero che identifica il primo giorno dell'anno (1=lunedì, 7=domenica).
 ***END************************************************************************/
 
@@ -15,16 +15,16 @@
 int main() {
     // TODO:
     // 1 - Sistemare giorni bianchi passando da mese a mese --> Basta aggiornare la variabile giorno (tipo uguale a i, dove i è l'ultimo giorno del mese precedente).
-    // 2 - Allineare printf del nome del mese.
-    // 3 - Sistemare printf dei giorni...il codice della prof non va!
+    // 2 - Aggiungere nome giorni (tipo: Lun Mar.... fare tipo %4 o %5d così tutto allineamento anche con i nomi dei giorni + lunghi).
 
     /* Dichiarazione delle variabili */
     short int anno = 0; // Variabile che rappresenta l'anno inserito dall'utente.
     short int giorno = 0; // Variabile che rappresenta il giorno inserito dall'utente.
     short int scanfReturn = 0; // Variabile utilizzata per controllare se la scanf ha ricevuto quello che si aspettava.
+    short int tempDay = 0; // Variabile utilizzata per poter tener traccia del giorno finale di ogni mese.
     bool inputCheck = false; // Variabile utilizzata per controllare che l'input dei dati avvenga correttamente.
     bool isBisestile;
-    
+
     /* Inizio effettivo del programma */
     printf("Il Calendario in C\n");
     printf("------------------\n");
@@ -48,7 +48,7 @@ int main() {
                 printf("Per favore, inserisci un giorno valido (solo un numero >0 e <8)!\n");
         }
         else
-            printf("Per favore, inserisci un anno corretto (solo un numero >0 e <3000)!\n");   
+            printf("Per favore, inserisci un anno corretto (solo un numero >0 e <3000)!\n");
     }
 
     /* Controllo se l'anno è bisestivo */
@@ -60,7 +60,7 @@ int main() {
         isBisestile = false;
 
     // Output del risultato del controllo con tanto di riepilogo dei dati.
-    printf("\nRiepilogo dati inseriti:\n\tAnno: %d, \tGiorno: %d, \tBisestile: %s", anno, giorno, isBisestile? "Sì" : "No");
+    printf("\nRiepilogo dati inseriti:\n\tAnno: %d, \n\tGiorno: %d, \n\tBisestile: %s", anno, giorno, isBisestile? "Si\'." : "No.");
 
     /* Mostra Calendario */
     printf("\n\n\nCalendario, Anno: %hd\n\n", anno);
@@ -84,7 +84,7 @@ int main() {
 
             // Spazi bianchi da mettere in base al giorno di partenza scelto dall'utente.
             for(int i = 1; i < giorno; i++)
-                printf(" ");
+                printf("   ");
 
             for(int i = 1; i <= 31; i++){
                 printf("%3d", i);
@@ -129,11 +129,11 @@ int main() {
             }
             printf("\n");
         }
-        
+
 
     }
 
-    // Comando che invita l'utente a premere il tasto "invio" per chiudere il programma.    
+    // Comando che invita l'utente a premere il tasto "invio" per chiudere il programma.
     printf("\n\n\nPremi invio per chiudere il terminale...");
     getchar();
     return 0;

@@ -50,7 +50,7 @@ int main() {
             printf("Per favore, inserisci un anno corretto (solo un numero >0 e <3000)!\n");
     }
 
-    /* Controllo se l'anno è bisestivo */
+    /* Controllo se l'anno è bisestile */
     if((anno % 400) == 0)
         isBisestile = true;
     else if((anno % 4) == 0 && (anno % 100) != 0)

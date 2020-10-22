@@ -49,6 +49,7 @@ int main() {
 
     /* Input dei dati */
     // Controllo Min e Max richiedendo l'inserimento dei valori finchè max non è maggiore di min.
+    // Codice riusabile, WOW!
     while (!inputCheck)
     {
         printf("Inserisci l\'intervallo di generazione (min max): ");

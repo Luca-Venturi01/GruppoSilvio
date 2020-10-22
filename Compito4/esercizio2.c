@@ -34,7 +34,7 @@ int main() {
     int min, max; // Rappresentano l'intervallo, inserito in input dall'utente, di generazione di numeri random.
     int contDuplicati; // Variabile utilizzata per contare il numero di duplicati.
     bool inputCheck = false; // Variabile utilizzata per verificare che l'input dell'utente sia corretto.
-    bool duplicate = true;
+    bool duplicateCheck = true;
     int cont = 0;
 
     /* Inizio del Programma */
@@ -85,15 +85,15 @@ int main() {
     /* Cerco i valori duplicati */
     for (int i = 0; i < nVals; i++)
     {
-        duplicate = true;
+        duplicateCheck = true;
         for (int j = i - 1; j >= 0; j--)
         {
             if(arrayPt1[i] == arrayPt1[j])
-                duplicate = false;
+                duplicateCheck = false;
         }
         
 
-        if(duplicate){
+        if(duplicateCheck){
             cont++;
         }
         
@@ -112,15 +112,15 @@ int main() {
             continue;
         }
 
-        duplicate = true;
+        duplicateCheck = true;
         for (int j = i - 1; j >= 0; j--)
         {
             if(arrayPt1[i] == arrayPt1[j])
-                duplicate = false;
+                duplicateCheck = false;
         }
         
 
-        if(duplicate){
+        if(duplicateCheck){
             arrayNoDuplicatiPt1[index] = arrayPt1[i];
             index++;
         }

@@ -9,7 +9,8 @@
 int main() {
 
     // TODO:
-    // Nothing atm
+    // 1 - Controllare se la fase di input, esempio: valore > x ecc. ecc.
+    // Refactoring? Meno codice stesse funzioni?
 
     /* Dichiarazione delle Variabili */
     int nVals = 0; // Variabile che rappresenta il numero di elementi che l'utente vuole inserire nel vettore.
@@ -34,6 +35,10 @@ int main() {
             i--;
             printf("Ultimo valore non valido, per favore re-inserire!");
         }
+        else if( arrayPt1[i] < 0){
+            i--;
+            printf("Ultimo valore non valido, per favore inserire solo valori > o = a 0!");
+        }
         fflush(stdin);
     }
     
@@ -43,6 +48,13 @@ int main() {
     for (int i = 0; i < N_VALS-1; i++)
         printf("%d, ", arrayPt1[i]);
     printf("%d <--\n", arrayPt1[N_VALS - 1]);
+
+    /* Compattazione */
+    for (int i = 0; i < N_VALS; i++)
+    {
+        
+    }
+    
 
     /* Parte 2: Con Random, No input utente */
     printf("\nEsercizio 2: Parte 2\n");

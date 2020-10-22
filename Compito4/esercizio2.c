@@ -24,6 +24,8 @@ int main() {
     // 1 - Controllare se la fase di input, esempio: valore > x ecc. ecc.
     // 2 - Cercare un modo per creare pseudo-dinamicamente i nuovi vettori con i duplicati.
     // 3 - Refactoring? Meno codice stesse funzioni? Usare operatore ternario.
+    // 4 - Inserire Compattazione anche nella parte 2.
+    // 5 - Sistemare output compattazione.
 
     /* Dichiarazione delle Variabili */
     short int scanfReturn = 0; // Variabile utilizzata per controllare se la scanf ha ricevuto quello che si aspettava.
@@ -32,6 +34,8 @@ int main() {
     int min, max; // Rappresentano l'intervallo, inserito in input dall'utente, di generazione di numeri random.
     int contDuplicati; // Variabile utilizzata per contare il numero di duplicati.
     bool inputCheck = false; // Variabile utilizzata per verificare che l'input dell'utente sia corretto.
+    bool duplicate = true;
+    int cont = 0;
 
     /* Inizio del Programma */
 
@@ -81,22 +85,52 @@ int main() {
     /* Cerco i valori duplicati */
     for (int i = 0; i < nVals; i++)
     {
-        for (int j = i + 1; j < nVals; j++)
+        duplicate = true;
+        for (int j = i - 1; j >= 0; j--)
         {
-            if (arrayPt1[i] == arrayPt1[j])
-            {
-                printf("Duplicato: %d", arrayPt1[j]);
-                contDuplicati++;
-                // PROBLEMA: Se l'utente inserisce 3 volte il 44, questo viene considerato duplicato due volte.
-            }
+            if(arrayPt1[i] == arrayPt1[j])
+                duplicate = false;
         }
+        
+
+        if(duplicate){
+            cont++;
+        }
+        
 
     }
 
     /* Compattazione: Creo il nuovo array */
-    // // Cosí trovo gli elementi del vettore = 0.
-    //     if(arrayPt1[i] == 0)
-    //         continue;
+    int arrayNoDuplicatiPt1[cont];
+    int index = 0;
+    for (int i = 0; i < nVals; i++)
+    {
+        // Cosí trovo gli elementi del vettore = 0.
+        if(arrayPt1[i] == 0)
+        {
+            cont--;
+            continue;
+        }
+
+        duplicate = true;
+        for (int j = i - 1; j >= 0; j--)
+        {
+            if(arrayPt1[i] == arrayPt1[j])
+                duplicate = false;
+        }
+        
+
+        if(duplicate){
+            arrayNoDuplicatiPt1[index] = arrayPt1[i];
+            index++;
+        }
+
+    }
+
+    /* Output valori vettore senza duplicati */
+    printf("\nNo duplicati: \n");
+    for (int i = 0; i < cont; i++)
+        printf("%d, ", arrayNoDuplicatiPt1[i]);
 
 
     /* Parte 2: Con Random, No input utente */

@@ -1,3 +1,15 @@
+/**HEADER********************************************************************
+ *  AUTORI: Lorenzo Gessi, Andrea Bedei, Fabio Notaro e Luca Venturi.
+ *  EMAIL:  lorenzo.gessi@studio.unibo.it, andrea.bedei2@studio.unibo.it, fabio.notaro2@studio.unibo.it, luca.venturi29@studio.unibo.it
+ *  DATA:   20201023
+ *  ES n.2: Scrivere un programma C che legga N numeri interi da tastiera e li memorizzi in un vettore. 
+            Il programma deve generare un secondo vettore compattando i numeri contenuti nel primo vettore. 
+            In particolare:
+                - ogni numero che compare ripetuto nel primo vettore, deve comparire una sola volta nel secondo vettore
+                - ogni numero uguale a zero presente nel primo vettore non deve comparire nel secondo vettore
+            Prevedere anche la versione in cui i numeri sono generati random.
+***END************************************************************************/
+
 /* Inclusione delle librerie */
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,13 +25,13 @@ int main() {
     // Refactoring? Meno codice stesse funzioni?
 
     /* Dichiarazione delle Variabili */
-    int nVals = 0; // Variabile che rappresenta il numero di elementi che l'utente vuole inserire nel vettore.
-    bool inputCheck = false; // Variabile utilizzata per verificare che l'input dell'utente sia corretto.
     short int scanfReturn = 0; // Variabile utilizzata per controllare se la scanf ha ricevuto quello che si aspettava.
+    int nVals = 0; // Variabile che rappresenta il numero di elementi che l'utente vuole inserire nel vettore.
     int random; // Rappresenta volta per volta il numero random generato da inserire nel vettore.
     int min, max; // Rappresentano l'intervallo, inserito in input dall'utente, di generazione di numeri random.
     int arrayPt1[N_VALS]; // E' il vettore utilizzato nella prima parte.
     int arrayPt2[N_VALS]; // E' il vettore utilizzato nella seconda parte.
+    bool inputCheck = false; // Variabile utilizzata per verificare che l'input dell'utente sia corretto.
 
     /* Inizio del Programma */
 
@@ -52,6 +64,14 @@ int main() {
     /* Compattazione */
     for (int i = 0; i < N_VALS; i++)
     {
+        for (int j = i + 1; j < N_VALS; j++)
+        {
+            if (arrayPt1[i] == arrayPt1[j])
+            {
+                
+            }
+            
+        }
         
     }
     

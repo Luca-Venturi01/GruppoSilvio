@@ -24,19 +24,15 @@ int main() {
     // 1 - Controllare se la fase di input, esempio: valore > x ecc. ecc.
     // 2 - Cercare un modo per creare pseudo-dinamicamente i nuovi vettori con i duplicati.
     // 3 - Refactoring? Meno codice stesse funzioni? Usare operatore ternario.
-    // 4 - Inserire Compattazione anche nella parte 2.
-    // 5 - Sistemare output compattazione.
-    // 6 - Controllare commenti.
-    // 7 - Magari suddivedere le dichiarazioni di variabili in 3 parti: quelli della parte 1 metterli 
+    // 4 - Controllare commenti.
+    // 5 - Magari suddivedere le dichiarazioni di variabili in 3 parti: quelli della parte 1 metterli 
     //     sotto la scritta della parte 1, stessa cosa per la parte 2, mentre quelli generali,
     //     lasciarli qui.
 
     /* Dichiarazione delle Variabili */
     short int scanfReturn = 0; // Variabile utilizzata per controllare se la scanf ha ricevuto quello che si aspettava.
     int nVals = 0; // Variabile che rappresenta il numero di elementi che l'utente vuole inserire nel vettore.
-    // int random; // Rappresenta volta per volta il numero random generato da inserire nel vettore.
     int min, max; // Rappresentano l'intervallo, inserito in input dall'utente, di generazione di numeri random.
-    // int contDuplicati; // Variabile utilizzata per contare il numero di duplicati.
     bool inputCheck = false; // Variabile utilizzata per verificare che l'input dell'utente sia corretto.
     bool duplicateCheck = true; // Variabile utilizzata per evitare che piú duplicati di un singolo numero vengano considerati nella creazione del nuovo array (e nell'inserimento dei valori).
     int cont = 0; // Variabile utilizzata per contare il numero di elementi che dovranno essere presenti nel nuovo vettore.

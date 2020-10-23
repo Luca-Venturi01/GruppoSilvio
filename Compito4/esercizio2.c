@@ -34,9 +34,9 @@ int main() {
     /* Dichiarazione delle Variabili */
     short int scanfReturn = 0; // Variabile utilizzata per controllare se la scanf ha ricevuto quello che si aspettava.
     int nVals = 0; // Variabile che rappresenta il numero di elementi che l'utente vuole inserire nel vettore.
-    int random; // Rappresenta volta per volta il numero random generato da inserire nel vettore.
+    // int random; // Rappresenta volta per volta il numero random generato da inserire nel vettore.
     int min, max; // Rappresentano l'intervallo, inserito in input dall'utente, di generazione di numeri random.
-    int contDuplicati; // Variabile utilizzata per contare il numero di duplicati.
+    // int contDuplicati; // Variabile utilizzata per contare il numero di duplicati.
     bool inputCheck = false; // Variabile utilizzata per verificare che l'input dell'utente sia corretto.
     bool duplicateCheck = true; // Variabile utilizzata per evitare che piú duplicati di un singolo numero vengano considerati nella creazione del nuovo array (e nell'inserimento dei valori).
     int cont = 0; // Variabile utilizzata per contare il numero di elementi che dovranno essere presenti nel nuovo vettore.

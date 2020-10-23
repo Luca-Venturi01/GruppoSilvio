@@ -125,9 +125,10 @@ int main() {
 
     /* Output valori vettore senza duplicati e/o 0 */
     printf("\nI valori contenuti nel nuovo vettore (no duplicati e/o 0) sono: \n");
+    printf("\tValori: --> ");
     for (int i = 0; i < cont - 1; i++)
         printf("%d, ", arrayNoDuplicatiPt1[i]);
-    printf("%d.\n", arrayNoDuplicatiPt1[cont - 1]);
+    printf("%d <--\n", arrayNoDuplicatiPt1[cont - 1]);
 
     /* Parte 2: Con Random, No input utente */
     printf("\n/--------------------------------------------------------------------\\\n");
@@ -223,9 +224,10 @@ int main() {
 
     /* Output valori vettore senza duplicati e/o 0 */
     printf("\nI valori contenuti nel nuovo vettore (no duplicati e/o 0) sono: \n");
+    printf("\tValori: --> ");
     for (int i = 0; i < cont - 1; i++)
         printf("%d, ", arrayNoDuplicatiPt2[i]);
-    printf("%d.\n", arrayNoDuplicatiPt2[cont - 1]);
+    printf("%d <--\n", arrayNoDuplicatiPt2[cont - 1]);
 
     // Comando che invita l'utente a premere il tasto "invio" per chiudere il programma.
     printf("\n\n\nPremi invio per chiudere il terminale...");

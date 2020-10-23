@@ -26,6 +26,10 @@ int main() {
     // 3 - Refactoring? Meno codice stesse funzioni? Usare operatore ternario.
     // 4 - Inserire Compattazione anche nella parte 2.
     // 5 - Sistemare output compattazione.
+    // 6 - Controllare commenti.
+    // 7 - Magari suddivedere le dichiarazioni di variabili in 3 parti: quelli della parte 1 metterli 
+    //     sotto la scritta della parte 1, stessa cosa per la parte 2, mentre quelli generali,
+    //     lasciarli qui.
 
     /* Dichiarazione delle Variabili */
     short int scanfReturn = 0; // Variabile utilizzata per controllare se la scanf ha ricevuto quello che si aspettava.
@@ -34,8 +38,9 @@ int main() {
     int min, max; // Rappresentano l'intervallo, inserito in input dall'utente, di generazione di numeri random.
     int contDuplicati; // Variabile utilizzata per contare il numero di duplicati.
     bool inputCheck = false; // Variabile utilizzata per verificare che l'input dell'utente sia corretto.
-    bool duplicateCheck = true;
-    int cont = 0;
+    bool duplicateCheck = true; // Variabile utilizzata per evitare che piú duplicati di un singolo numero vengano considerati nella creazione del nuovo array (e nell'inserimento dei valori).
+    int cont = 0; // Variabile utilizzata per contare il numero di elementi che dovranno essere presenti nel nuovo vettore.
+    int index = 0; // Variabile che rappresenta l'indice dei nuovi vettori (no duplicati e/o 0) che ci permette di inserire nella posizione giusta gli elementi.
 
     /* Inizio del Programma */
 
@@ -78,7 +83,7 @@ int main() {
     /* Output valori vettore */
     printf("\nI valori contenuti nel vettore sono: \n");
     printf("\tValori: --> ");
-    for (int i = 0; i < nVals-1; i++)
+    for (int i = 0; i < nVals - 1; i++)
         printf("%d, ", arrayPt1[i]);
     printf("%d <--\n", arrayPt1[nVals - 1]);
 
@@ -86,23 +91,18 @@ int main() {
     for (int i = 0; i < nVals; i++)
     {
         duplicateCheck = true;
+
         for (int j = i - 1; j >= 0; j--)
-        {
             if(arrayPt1[i] == arrayPt1[j])
                 duplicateCheck = false;
-        }
         
-
-        if(duplicateCheck){
+        if(duplicateCheck)
             cont++;
-        }
         
-
     }
 
-    /* Compattazione: Creo il nuovo array */
-    int arrayNoDuplicatiPt1[cont];
-    int index = 0;
+    /* Compattazione: Creo il nuovo array */\
+    int arrayNoDuplicatiPt1[cont]; // E' il vettore senza duplicati ne' 0 utilizzato nella prima parte.
     for (int i = 0; i < nVals; i++)
     {
         // Cosí trovo gli elementi del vettore = 0.
@@ -114,26 +114,25 @@ int main() {
 
         duplicateCheck = true;
         for (int j = i - 1; j >= 0; j--)
-        {
             if(arrayPt1[i] == arrayPt1[j])
                 duplicateCheck = false;
-        }
         
-
-        if(duplicateCheck){
+        if(duplicateCheck) {
             arrayNoDuplicatiPt1[index] = arrayPt1[i];
             index++;
         }
-
     }
 
-    /* Output valori vettore senza duplicati */
-    printf("\nNo duplicati: \n");
-    for (int i = 0; i < cont; i++)
+    /* Output valori vettore senza duplicati e/o 0 */
+    printf("\nI valori contenuti nel nuovo vettore (no duplicati e/o 0) sono: \n");
+    for (int i = 0; i < cont - 1; i++)
         printf("%d, ", arrayNoDuplicatiPt1[i]);
-
+    printf("%d.\n", arrayNoDuplicatiPt1[cont - 1]);
 
     /* Parte 2: Con Random, No input utente */
+    printf("\n/--------------------------------------------------------------------\\\n");
+    printf("----------------------------------------------------------------------\n");
+    printf("\\--------------------------------------------------------------------/\n");
     printf("\nEsercizio 2: Parte 2\n");
 
     /* Input dei dati */
@@ -172,7 +171,7 @@ int main() {
             printf("Min non puo\' essere minore di 0 (ovvero un numero negativo)!\n");
     }
 
-    /* Generazione numeri random e inserimento nel vettore */
+    /* Generazione numeri random e inserimento dei valori nel vettore */
 	for(int i = 0; i < nVals; i++)
         arrayPt2[i] = min + (rand()+time(NULL))%(max+1-min); // Genera numeri tra min e max.
 
@@ -183,26 +182,50 @@ int main() {
         printf("%d, ", arrayPt2[i]);
     printf("%d <--\n", arrayPt2[nVals - 1]);
 
-    /* Compattazione */
+    /* Cerco i valori duplicati */
+    duplicateCheck = true;
+    cont = 0;
+    for (int i = 0; i < nVals; i++)
+    {
+        duplicateCheck = true;
+
+        for (int j = i - 1; j >= 0; j--)
+            if(arrayPt2[i] == arrayPt2[j])
+                duplicateCheck = false;
+        
+        if(duplicateCheck)
+            cont++;
+        
+    }
+
+    /* Compattazione: Creo il nuovo array */
+    int arrayNoDuplicatiPt2[cont]; // E' il vettore senza duplicati ne' 0 utilizzato nella prima parte.
+    index = 0;
     for (int i = 0; i < nVals; i++)
     {
         // Cosí trovo gli elementi del vettore = 0.
         if(arrayPt2[i] == 0)
-            continue;
-        
-        // Cosí trovo i duplicati.
-        for (int j = i + 1; j < nVals; j++)
         {
-            if (arrayPt2[i] == arrayPt2[j])
-            {
-                printf("Duplicato: %d", arrayPt2[j]);
-            }
+            cont--;
+            continue;
         }
-    
-        // Qui devo inserire gli elementi del vettore che sono diversi da quelli duplicati.
-        // some code goes here...
 
+        duplicateCheck = true;
+        for (int j = i - 1; j >= 0; j--)
+            if(arrayPt2[i] == arrayPt2[j])
+                duplicateCheck = false;
+        
+        if(duplicateCheck) {
+            arrayNoDuplicatiPt2[index] = arrayPt2[i];
+            index++;
+        }
     }
+
+    /* Output valori vettore senza duplicati e/o 0 */
+    printf("\nI valori contenuti nel nuovo vettore (no duplicati e/o 0) sono: \n");
+    for (int i = 0; i < cont - 1; i++)
+        printf("%d, ", arrayNoDuplicatiPt2[i]);
+    printf("%d.\n", arrayNoDuplicatiPt2[cont - 1]);
 
     // Comando che invita l'utente a premere il tasto "invio" per chiudere il programma.
     printf("\n\n\nPremi invio per chiudere il terminale...");

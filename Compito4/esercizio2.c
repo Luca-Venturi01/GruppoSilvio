@@ -23,11 +23,7 @@ int main() {
     // TODO:
     // 1 - Controllare se la fase di input, esempio: valore > x ecc. ecc.
     // 2 - Cercare un modo per creare pseudo-dinamicamente i nuovi vettori con i duplicati.
-    // 3 - Refactoring? Meno codice stesse funzioni? Usare operatore ternario.
     // 4 - Controllare commenti.
-    // 5 - Magari suddivedere le dichiarazioni di variabili in 3 parti: quelli della parte 1 metterli 
-    //     sotto la scritta della parte 1, stessa cosa per la parte 2, mentre quelli generali,
-    //     lasciarli qui.
 
     /* Dichiarazione delle Variabili */
     short int scanfReturn = 0; // Variabile utilizzata per controllare se la scanf ha ricevuto quello che si aspettava.

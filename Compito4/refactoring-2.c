@@ -102,8 +102,6 @@ int main() {
         printf("%d <--\n", array[nVals - 1]);
 
         /* Cerco i valori duplicati */
-        duplicateCheck = true;
-        cont = 0;
         for (int i = 0; i < nVals; i++)
         {
             duplicateCheck = true;
@@ -147,8 +145,12 @@ int main() {
             printf("%d, ", arrayCompattato[i]);
         printf("%d <--\n", arrayCompattato[cont - 1]);
 
+        // Modifico i valori di queste variabili affinché il programma funzioni correttamente
+        // alla seconda iterazione del for.
         parte1 = false;
         inputCheck = false;
+        duplicateCheck = true;
+        cont = 0;
     }
 
     // Comando che invita l'utente a premere il tasto "invio" per chiudere il programma.

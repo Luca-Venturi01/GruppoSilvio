@@ -28,6 +28,12 @@ int main() {
     bool duplicateCheck = true; // Variabile utilizzata per evitare che piú duplicati di un singolo numero vengano considerati nella creazione del nuovo array (e nell'inserimento dei valori).
     bool parte1 = true; // Variabile che rappresenta la parte dell'esercizio in cui l'utente si trova.
     	
+    /* 
+        Disclaimer:
+            Avrei potuto utilizzare meno bool per eseguire i vari controlli, ma ho preferito lasciarli per
+            permettere una piú semplice comprensione del codice.
+    */
+
     /* Inizio del Programma */
     // La re-iterazione avviene 2 volte dato che 2 sono le parti del programma.
     for (int k = 1; k <= 2; k++)

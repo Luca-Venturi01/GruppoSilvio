@@ -16,8 +16,6 @@
 #include <stdbool.h>
 #include <time.h>
 
-// #define N_VALS 10
-
 int main() {
 
     // TODO:

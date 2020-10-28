@@ -27,8 +27,8 @@ int main() {
     bool inputCheck = false; // Variabile utilizzata per verificare che l'input dell'utente sia corretto.
     bool duplicateCheck = true; // Variabile utilizzata per evitare che piú duplicati di un singolo numero vengano considerati nella creazione del nuovo array (e nell'inserimento dei valori).
     bool parte1 = true; // Variabile che rappresenta la parte dell'esercizio in cui l'utente si trova.
-    	
-    /* 
+
+    /*
         Disclaimer:
             Avrei potuto utilizzare meno bool per eseguire i vari controlli, ma ho preferito lasciarli per
             permettere una piú semplice comprensione del codice.
@@ -42,7 +42,7 @@ int main() {
             printf("Esercizio 2: Parte 1\n");
         else
             printf("\nEsercizio 2: Parte 2\n");
-        
+
         /* Input dei dati */
         // Richiedo e Controllo il numero di elementi che l'utente vuole inserire nel vettore.
         while(!inputCheck){
@@ -85,7 +85,7 @@ int main() {
                 scanfReturn = scanf("%d %d", &min, &max);
                 fflush(stdin); // Elimina eventuali caratteri indesiderati presenti in stdin.
 
-                if(max >= min && min > 0 && scanfReturn == 2)
+                if(max >= min && min >= 0 && scanfReturn == 2)
                     inputCheck = true;
                 else if(scanfReturn != 2)
                     printf("L'input dei valori min e max non e\' corretto, per favore inserisci solo dei numeri!\n");
@@ -115,10 +115,10 @@ int main() {
             for (int j = i - 1; j >= 0; j--)
                 if(array[i] == array[j])
                     duplicateCheck = false;
-            
+
             if(duplicateCheck)
                 cont++;
-            
+
         }
 
         /* Compattazione: Creo il nuovo array */
@@ -137,7 +137,7 @@ int main() {
             for (int j = i - 1; j >= 0; j--)
                 if(array[i] == array[j])
                     duplicateCheck = false;
-            
+
             if(duplicateCheck) {
                 arrayCompattato[index] = array[i];
                 index++;
@@ -163,5 +163,5 @@ int main() {
     printf("\n\n\nPremi invio per chiudere il terminale...");
     getchar();
     return 0;
-    
+
 }
